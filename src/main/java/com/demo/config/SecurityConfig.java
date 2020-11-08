@@ -23,9 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.inMemoryAuthentication()
                 .withUser(users.username("user").password("user").roles("EMPLOYEE"))
-                .withUser(users.username("admin").password("admin").roles("ADMIN"))
-                .withUser(users.username("john").password("1234").roles("MANAGER"));
-
+                .withUser(users.username("admin").password("admin").roles("EMPLOYEE", "ADMIN"))
+                .withUser(users.username("john").password("1234").roles("EMPLOYEE", "MANAGER"));
     }
 
     @Override
@@ -37,6 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/showLoginPage")
                     .loginProcessingUrl("/authenticateUser")
+                    .permitAll()
+                .and()
+                    .logout()
                     .permitAll();
     }
 }
