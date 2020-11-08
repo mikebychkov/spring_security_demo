@@ -1,1 +1,1 @@
-Example of Spring Security usage.
+Example of Spring Security usage. (no XML configuration)
