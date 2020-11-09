@@ -18,12 +18,26 @@
 
 <hr>
 
-<p>
-    User: <security:authentication property="principal.username" />
-</p>
-<p>
-    Role(s): <security:authentication property="principal.authorities" />
-</p>
+    <p>
+        User: <security:authentication property="principal.username" />
+    </p>
+    <p>
+        Role(s): <security:authentication property="principal.authorities" />
+    </p>
+
+    <security:authorize access="hasRole('MANAGER')" >
+        <hr>
+        <p>
+            <a href="${pageContext.request.contextPath}/leaders">Managers Link</a>
+        </p>
+    </security:authorize>
+
+    <security:authorize access="hasRole('ADMIN')">
+        <hr>
+        <p>
+            <a href="${pageContext.request.contextPath}/systems">Admins Link</a>
+        </p>
+    </security:authorize>
 
 <hr>
 
